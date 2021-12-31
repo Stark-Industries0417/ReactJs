@@ -1,20 +1,27 @@
 import { useEffect, useState } from 'react';
-import Button from './Button'
-import styles from './App.module.css'
+
+function Hello() {
+  // function byFn() {
+  //   console.log('destroyed');
+  // }
+  // function hiFn() {
+  //   console.log('created');
+  //   return byFn;
+  // }
+  useEffect(() => {
+    console.log('created');
+    return () => console.log('destroyed'); // execute when a component is deleted
+  }, []);
+  return <h1>Hello</h1>
+}
 
 function App() {
-  const [counter, setCounter] = useState(0);
-  const onClick = () => setCounter(prev => prev + 1);
-  console.log('i run all the time');
-
-  const iRunOnlyOnce = () => {
-    console.log('i run only once');
-  }
-  useEffect(iRunOnlyOnce, []);
+  const [showing, setShowing] = useState(false);
+  const onClick = () => setShowing(prev => !prev);
   return (
     <div>
-      <h1 className={styles.title}>{counter}</h1>
-      <button onClick={onClick}>Click me</button>
+      {showing ? <Hello /> : null}
+      <button onClick={onClick}>{showing ? 'Hide' : 'Show'}</button>
     </div>
   );
 }
