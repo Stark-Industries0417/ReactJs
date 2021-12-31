@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import Button from './Button'
-import styles from './App.module.css'
+import styles from './useEffect.module.css'
 
-function App() {
+function useEffect() {
   const [counter, setCounter] = useState(0);
   const [keyword, setKeyword] = useState("");
 
@@ -36,4 +36,4 @@ function App() {
   );
 }
 
-export default App;
+export default useEffect;
